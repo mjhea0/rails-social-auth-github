@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Github Social Auth
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+  .container{:style => "padding-top:60px;"}
+  .h3
+    - if session[:uid].present?
+      %div
+        = session[:name]
+      %div
+        = image_tag session[:avatar]
+      %div
+        = session[:provider]
+      %div
+        = link_to "Sign out", sign_out_path, :rel => "external"
+    - else
+      = link_to "Authenticate via Github", "/auth/github", :rel => "external"
+    = yield

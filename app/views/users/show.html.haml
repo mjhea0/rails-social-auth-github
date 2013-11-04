@@ -1,0 +1,8 @@
+%div
+  users#show
+
+%div= "Github user: #{@user.name}"
+
+%ul.repos
+  - @repos.each do |repo|
+    %li= repo.full_name
